@@ -1,9 +1,7 @@
 <h1>Edit song:</h1>
 
-<%= form_for [@album, @song] do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.label :lyrics %>
-  <%= f.text_area :lyrics %>
-  <p><%= f.submit %></p>
+<% if current_user.role == :admin %>
+<%= render "layouts/songs_form" %>
+<% else %>
+<%= render "layouts/user_error" %>
 <% end %>
